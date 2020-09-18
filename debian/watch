@@ -1,0 +1,3 @@
+version=3
+opts="pgpsigurlmangle=s/tar\.gz/tar.asc/,decompress" \
+https://download.samba.org/pub/ldb/ ldb-(2\.0\..+).tar.gz

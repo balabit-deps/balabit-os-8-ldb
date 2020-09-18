@@ -1,0 +1,3 @@
+libpyldb-util.cpython-38-aarch64-linux-gnu.so.2 python3-ldb #MINVER#
+ PYLDB_UTIL.CPYTHON_38_AARCH64_LINUX_GNU_2.0.10@PYLDB_UTIL.CPYTHON_38_AARCH64_LINUX_GNU_2.0.10 2:2.0.10
+#include "python3-ldb.symbols.common"
