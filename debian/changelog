@@ -1,3 +1,24 @@
+ldb (2:2.0.10-0ubuntu0.20.04.3) focal-security; urgency=medium
+
+  * SECURITY UPDATE: Heap corruption via crafted DN strings
+    - debian/patches/CVE-2020-27840-1.patch: avoid head corruption in
+      ldb_dn_explode in common/ldb_dn.c.
+    - debian/patches/CVE-2020-27840-2.patch: add Dn.validate test to ldb
+      in tests/python/crash.py, wscript.
+    - CVE-2020-27840
+  * SECURITY UPDATE: Out of bounds read in AD DC LDAP server
+    - debian/patches/CVE-2021-20277-1.patch: add tests for
+      ldb_wildcard_compare in tests/ldb_match_test.c.
+    - debian/patches/CVE-2021-20277-2.patch: ldb_match tests with extra
+      spaces in tests/ldb_match_test.c.
+    - debian/patches/CVE-2021-20277-3.patch: remove tests from
+      ldb_match_test that do not pass in tests/ldb_match_test.c.
+    - debian/patches/CVE-2021-20277-4.patch: stay in bounds in
+      common/attrib_handlers.c.
+    - CVE-2021-20277
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Wed, 24 Mar 2021 08:01:45 -0400
+
 ldb (2:2.0.10-0ubuntu0.20.04.2) focal-security; urgency=medium
 
   * No change rebuild to pick up riscv64 build.

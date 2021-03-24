@@ -1,3 +1,9 @@
 01_manpage_dates
 02_hurd
 Skip-test_guid_indexed_v1_db-on-mips64el-ppc64el-ia6.patch
+CVE-2020-27840-1.patch
+CVE-2020-27840-2.patch
+CVE-2021-20277-1.patch
+CVE-2021-20277-2.patch
+CVE-2021-20277-3.patch
+CVE-2021-20277-4.patch
