@@ -1,8 +1,8 @@
 From e2d88d65f077f6ed26a79b6e31b46445bb081df9 Mon Sep 17 00:00:00 2001
 From: Mathieu Parent <math.parent@gmail.com>
 Date: Wed, 2 Oct 2019 21:26:07 +0200
-Subject: [PATCH] Skip test_guid_indexed_v1_db on mips64el, ppc64el, ia64,
- ppc64
+Subject: [PATCH] Skip test_guid_indexed_v1_db on mipsel, mips64el, ppc64el,
+ ia64, powerpc, ppc64
 
 Workaround for https://bugzilla.samba.org/show_bug.cgi?id=14146
 ---
@@ -24,7 +24,7 @@ index 0844cd2..607ab52 100644
  
      # Check a database with V1 format with GUID indexing enabled is repacked
      # with version 2 format.
-+    @skipIf(os.environ.get('DEB_HOST_ARCH', 'unknown') in ['mips64el', 'ppc64el', 'ia64', 'ppc64'],
++    @skipIf(os.environ.get('DEB_HOST_ARCH', 'unknown') in ['mipsel', 'mips64el', 'ppc64el', 'ia64', 'powerpc', 'ppc64'],
 +            "Premade v1 unreadable on arch %s" % os.environ.get('DEB_HOST_ARCH', 'unknown'))
      def test_guid_indexed_v1_db(self):
          self.setup_premade_v1_db()

@@ -1,3 +1,26 @@
+ldb (2:2.2.3-0ubuntu0.20.04.2) focal-security; urgency=medium
+
+  * Update to 2.2.3 for samba security update
+    - Removed patches included in new version:
+      + CVE-2020-27840-1.patch
+      + CVE-2020-27840-2.patch
+      + CVE-2021-20277-1.patch
+      + CVE-2021-20277-2.patch
+      + CVE-2021-20277-3.patch
+      + CVE-2021-20277-4.patch
+    - Updated patches from Impish package:
+      + Skip-test_guid_indexed_v1_db-on-mips64el-ppc64el-ia6.patch
+      + Fix-FTBFS-Increase-the-over-estimation-for-sparse-fi.patch
+      + Skip-ldb_lmdb_free_list_test-on-ppc64el-ppc64-and-sp.patch
+    - debian/*symbols*: added new symbols.
+    - debian/patches/Skip_failing_tests.diff: skip tests failing on 32-bit
+      archs.
+    - debian/control: bump tdb Build-Depends to 1.4.3, bump talloc
+      Build-Depends to 2.3.1, bump tevent Build-Depends to 0.10.2.
+    - CVE-2020-25718
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Mon, 01 Nov 2021 07:50:21 -0400
+
 ldb (2:2.0.10-0ubuntu0.20.04.3) focal-security; urgency=medium
 
   * SECURITY UPDATE: Heap corruption via crafted DN strings
