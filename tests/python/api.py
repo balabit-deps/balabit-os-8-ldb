@@ -5,10 +5,12 @@
 import os
 from unittest import TestCase
 import sys
+sys.path.insert(0, "bin/python")
 import gc
 import time
 import ldb
 import shutil
+import errno
 
 PY3 = sys.version_info > (3, 0)
 
@@ -42,9 +44,26 @@ class NoContextTests(TestCase):
         self.assertEqual("19700101000000.0Z", ldb.timestring(0))
         self.assertEqual("20071119191012.0Z", ldb.timestring(1195499412))
 
+        self.assertEqual("00000101000000.0Z", ldb.timestring(-62167219200))
+        self.assertEqual("99991231235959.0Z", ldb.timestring(253402300799))
+
+        # should result with OSError EOVERFLOW from gmtime()
+        with self.assertRaises(OSError) as err:
+            ldb.timestring(-62167219201)
+        self.assertEqual(err.exception.errno, errno.EOVERFLOW)
+        with self.assertRaises(OSError) as err:
+            ldb.timestring(253402300800)
+        self.assertEqual(err.exception.errno, errno.EOVERFLOW)
+        with self.assertRaises(OSError) as err:
+            ldb.timestring(0x7fffffffffffffff)
+        self.assertEqual(err.exception.errno, errno.EOVERFLOW)
+
     def test_string_to_time(self):
         self.assertEqual(0, ldb.string_to_time("19700101000000.0Z"))
         self.assertEqual(1195499412, ldb.string_to_time("20071119191012.0Z"))
+
+        self.assertEqual(-62167219200, ldb.string_to_time("00000101000000.0Z"))
+        self.assertEqual(253402300799, ldb.string_to_time("99991231235959.0Z"))
 
     def test_binary_encode(self):
         encoded = ldb.binary_encode(b'test\\x')
@@ -3056,6 +3075,12 @@ class LdbMsgTests(TestCase):
     def test_notpresent(self):
         self.assertRaises(KeyError, lambda: self.msg["foo"])
 
+    def test_invalid(self):
+        try:
+            self.assertRaises(TypeError, lambda: self.msg[42])
+        except KeyError:
+            self.fail()
+
     def test_del(self):
         del self.msg["foo"]
 
@@ -3170,6 +3195,29 @@ class LdbMsgTests(TestCase):
 
     def test_get_unknown_text(self):
         self.assertEqual(None, self.msg.text.get("lalalala"))
+
+    def test_contains(self):
+        self.msg['foo'] = ['bar']
+        self.assertIn('foo', self.msg)
+
+        self.msg['Foo'] = ['bar']
+        self.assertIn('Foo', self.msg)
+
+    def test_contains_case(self):
+        self.msg['foo'] = ['bar']
+        self.assertIn('Foo', self.msg)
+
+        self.msg['Foo'] = ['bar']
+        self.assertIn('foo', self.msg)
+
+    def test_contains_dn(self):
+        self.assertIn('dn', self.msg)
+
+    def test_contains_dn_case(self):
+        self.assertIn('DN', self.msg)
+
+    def test_contains_invalid(self):
+        self.assertRaises(TypeError, lambda: None in self.msg)
 
     def test_msg_diff(self):
         l = ldb.Ldb()
