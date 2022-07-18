@@ -233,7 +233,14 @@ libldb.so.2 #PACKAGE# #MINVER#
  ldb_msg_add_steal_string@LDB_0.9.10 0.9.21
  ldb_msg_add_steal_value@LDB_0.9.10 0.9.21
  ldb_msg_add_string@LDB_0.9.10 0.9.21
+ ldb_msg_add_string_flags@LDB_2.2.3 2:2.2.3-0ubuntu0.20.04.3
  ldb_msg_add_value@LDB_0.9.10 0.9.21
+ ldb_msg_append_fmt@LDB_2.2.3 2:2.2.3-0ubuntu0.20.04.3
+ ldb_msg_append_linearized_dn@LDB_2.2.3 2:2.2.3-0ubuntu0.20.04.3
+ ldb_msg_append_steal_string@LDB_2.2.3 2:2.2.3-0ubuntu0.20.04.3
+ ldb_msg_append_steal_value@LDB_2.2.3 2:2.2.3-0ubuntu0.20.04.3
+ ldb_msg_append_string@LDB_2.2.3 2:2.2.3-0ubuntu0.20.04.3
+ ldb_msg_append_value@LDB_2.2.3 2:2.2.3-0ubuntu0.20.04.3
  ldb_msg_canonicalize@LDB_0.9.10 0.9.21
  ldb_msg_check_string_attribute@LDB_0.9.10 0.9.21
  ldb_msg_copy@LDB_0.9.10 0.9.21
@@ -241,6 +248,7 @@ libldb.so.2 #PACKAGE# #MINVER#
  ldb_msg_copy_shallow@LDB_0.9.10 0.9.21
  ldb_msg_diff@LDB_0.9.10 0.9.21
  ldb_msg_difference@LDB_0.9.15 0.9.21
+ ldb_msg_element_add_value@LDB_2.2.3 2:2.2.3-0ubuntu0.20.04.3
  ldb_msg_element_compare@LDB_0.9.10 0.9.21
  ldb_msg_element_compare_name@LDB_0.9.10 0.9.21
  ldb_msg_element_equal_ordered@LDB_1.1.6 1:1.1.6

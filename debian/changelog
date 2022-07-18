@@ -1,3 +1,29 @@
+ldb (2:2.2.3-0ubuntu0.20.04.3) focal-security; urgency=medium
+
+  * SECURITY UPDATE: MaxQueryDuration not honoured in Samba AD DC LDAP
+    - debian/patches/CVE-2021-3670.patch: Confirm the request has not yet
+      timed out in ldb filter processing in ldb_key_value/ldb_kv.c,
+      ldb_key_value/ldb_kv.h, ldb_key_value/ldb_kv_index.c,
+      ldb_key_value/ldb_kv_search.c.
+    - CVE-2021-3670
+  * SECURITY UPDATE: use-after-free via  LDAP add or modify request
+    - debian/patches/CVE-2022-32745_6-06.patch: Use LDB_FLAG_MOD_TYPE()
+      for flags equality check in modules/rdn_name.c.
+    - debian/patches/CVE-2022-32745_6-10.patch: Add flag to mark message
+      element values as shared in common/ldb_msg.c, include/ldb_module.h.
+    - debian/patches/CVE-2022-32745_6-11.patch: Ensure shallow copy
+      modifications do not affect original message in common/ldb_msg.c,
+      include/ldb.h.
+    - debian/patches/CVE-2022-32745_6-12.patch: Add functions for appending
+      to an ldb_message in common/ldb_msg.c, include/ldb.h.
+    - debian/patches/CVE-2022-32745_6-13.patch: Make use of functions for
+      appending to an ldb_message in ldb_map/ldb_map.c,
+      ldb_map/ldb_map_inbound.c, modules/rdn_name.c.
+    - CVE-2022-32746
+  * debian/libldb2.symbols: added new symbols.
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Mon, 18 Jul 2022 07:57:54 -0400
+
 ldb (2:2.2.3-0ubuntu0.20.04.2) focal-security; urgency=medium
 
   * Update to 2.2.3 for samba security update
