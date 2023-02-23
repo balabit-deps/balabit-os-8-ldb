@@ -1,3 +1,20 @@
+ldb (2:2.4.4-0ubuntu0.20.04.1) focal-security; urgency=medium
+
+  * Update to 2.4.4 for samba security update
+    - Removed patches included in new version:
+      + Fix-FTBFS-Increase-the-over-estimation-for-sparse-fi.patch
+      + CVE-2021-3670.patch
+      + CVE-2022-32745_6-06.patch
+      + CVE-2022-32745_6-10.patch
+      + CVE-2022-32745_6-11.patch
+      + CVE-2022-32745_6-12.patch
+      + CVE-2022-32745_6-13.patch
+    - debian/*symbols*: added new symbols.
+    - debian/control: bump tdb Build-Depends to 1.4.4, talloc to 2.3.3,
+      and tevent to 0.11.0.
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Thu, 23 Feb 2023 10:29:16 -0500
+
 ldb (2:2.2.3-0ubuntu0.20.04.3) focal-security; urgency=medium
 
   * SECURITY UPDATE: MaxQueryDuration not honoured in Samba AD DC LDAP
